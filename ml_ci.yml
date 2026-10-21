@@ -1,0 +1,22 @@
+name : ML CI
+
+on : [push]
+
+jobs:
+  test:
+    run-on: windows-latest
+
+    steps:
+      - name: checkout repository
+        uses: action/checkout@v4
+
+        -name: set up Python
+        uses: action/setup-python@v5
+        with:
+         python-version: "3.14"
+
+        -name: Install dependencies 
+          run: pip install pytest 
+
+        -name: Run tests
+        run: pytest
